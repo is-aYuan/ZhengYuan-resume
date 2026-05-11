@@ -71,6 +71,7 @@ test('homepage contains the required resume sections and interactive hooks', () 
 
   assert.match(html, /郑远/);
   assert.match(html, /AI 产品经理/);
+  assert.match(html, /AI 产品经理 \/ AI 创业项目发起人（OPC） \/ 抖音深度合作·独家签约作者/);
   assert.match(html, /香港中文大学/);
   assert.match(html, /武汉理工大学/);
   assert.match(html, /<strong>武汉理工大学·本科<\/strong>/);
@@ -86,6 +87,10 @@ test('homepage contains the required resume sections and interactive hooks', () 
   assert.match(html, /2024年 - 至今/);
   assert.match(html, /AI 老年自传项目/);
   assert.match(html, /1000w/);
+  assert.ok(
+    html.indexOf('data-detail-id="creator-douyin"') < html.indexOf('data-detail-id="intern-orange-vision"'),
+    'creator-douyin should be the first timeline card'
+  );
   assert.match(html, /邮箱：18486162501@163\.com/);
   assert.match(html, /微信：ayuan_wwhs \/ 18486162501/);
   assert.match(html, /QQ：2174628944/);
@@ -127,6 +132,7 @@ test('homepage contains the required resume sections and interactive hooks', () 
   assert.match(html, /<h2 id="projects-title">项目详情<\/h2>/);
   assert.match(html, /<img class="avatar-photo" src="assets\/avatar\.png" alt="郑远证件照"/);
   assert.doesNotMatch(html, /AI Product Portfolio/);
+  assert.doesNotMatch(html, /AI 产品经理 \/ AI 创业项目发起人（OPC） \/ 抖音独家签约内容创作者/);
   assert.doesNotMatch(html, /深圳 \/ 香港方向，关注 AI 产品/);
   assert.doesNotMatch(html, /school-mark/);
   assert.doesNotMatch(html, /核心能力亮点/);
