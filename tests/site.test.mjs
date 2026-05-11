@@ -71,7 +71,7 @@ test('homepage contains the required resume sections and interactive hooks', () 
 
   assert.match(html, /郑远/);
   assert.match(html, /AI 产品经理/);
-  assert.match(html, /AI 产品经理 \/ AI 创业项目发起人（OPC） \/ 抖音深度合作·独家签约作者/);
+  assert.match(html, /AI 产品经理 \/ AI 创业项目发起人（OPC） \/ 抖音千万流量·深度合作独家签约作者/);
   assert.match(html, /香港中文大学/);
   assert.match(html, /武汉理工大学/);
   assert.match(html, /<strong>武汉理工大学·本科<\/strong>/);
