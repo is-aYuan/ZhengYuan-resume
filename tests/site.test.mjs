@@ -2,6 +2,14 @@ import { readFileSync, existsSync } from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
+const readPngSize = (file) => {
+  const buffer = readFileSync(file);
+  return {
+    width: buffer.readUInt32BE(16),
+    height: buffer.readUInt32BE(20),
+  };
+};
+
 const files = [
   'index.html',
   'styles.css',
@@ -16,6 +24,13 @@ test('static website files exist', () => {
   for (const file of files) {
     assert.equal(existsSync(file), true, `${file} should exist`);
   }
+});
+
+test('OranSim portfolio image uses the latest provided screenshot', () => {
+  assert.deepEqual(readPngSize('assets/oransim-interface.png'), {
+    width: 3390,
+    height: 1958,
+  });
 });
 
 test('homepage contains the required resume sections and interactive hooks', () => {
